@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css">
+  </head>
+  <body class="page">
+    <div class="page__container">
+      <header class="header">
+        <img src="./sprint-4-images/logo.svg" alt="логотип Место" class="header__logo">
+        <div class="header__line">
+        </div>
+      </header>
+      <main class="content">
+        <section class="profile">
+          <div class="profile__avatar">
+            <img src="./sprint-4-images/image.jpg" alt="Жак-Ив Кусто" class="profile__image">
+          </div>
+          <div class="profile__info">
+            <h1 class="profile__title">
+              Жак-Ив Кусто
+            </h1>
+            <button class="profile__edit-button profile__edit-button_hover" type="button">
+            <img class="profile__edit-image" alt="кнопка с карандашем" src="./sprint-4-images/Vector.svg">
+            </button>
+            <P class="profile__subtitle">
+              Исследователь океана
+            </P>
+          </div>
+          <button class="profile__add-button profile__add-button_hover" type="button">
+          <img class="profile__add-image" alt="добавить" src="./sprint-4-images/plus.svg">
+          </button>
+        </section>
+        <section class="elements">
+          <ul class="elements-list">
+            <li class="element">
+              <img class="element__mask-group" alt="кафе Травел" src="./sprint-4-images/igor-oliyarnik-Uu5aXBI1oLk-unsplash.jpg">
+              <div class="element__info">
+                <p class="element__text">
+                  Кафе Травел
+                </p>
+                <button class="element__group element__group_hover element__group_active" type="button">
+                </button>
+              </div>
+            </li>
+            <li class="element">
+              <img class="element__mask-group" alt="Сиднейский оперный театр" src="./sprint-4-images/photoholgic-jK9dT34TfuI-unsplash.jpg">
+              <div class="element__info">
+                <p class="element__text">
+                  Сиднейский оперный театр
+                </p>
+                <button class="element__group element__group_hover element__group_active" type="button">
+                </button>              
+              </div>
+            </li>
+            <li class="element">
+              <img class="element__mask-group" alt="Порт Сочи" src="./sprint-4-images/damir-yakupov-XEj4CIoNYbk-unsplash.jpg">
+              <div class="element__info">
+                <p class="element__text">
+                  Порт Сочи
+                </p>
+                <button class="element__group element__group_hover element__group_active" type="button">
+                </button>
+              </div>
+            </li>
+            <li class="element">
+              <img class="element__mask-group" alt="Литейный мост" src="./sprint-4-images/hu-chen-pwuzRFG4Dm4-unsplash.jpg">
+              <div class="element__info">
+                <p class="element__text">
+                  Литейный мост
+                </p>
+                <button class="element__group element__group_hover element__group_active" type="button">
+                </button>
+              </div>
+            </li>
+            <li class="element">
+              <img class="element__mask-group" alt="Босфор" src="./sprint-4-images/despina-galani-k5yE2uTuyys-unsplash.jpg">
+              <div class="element__info">
+                <p class="element__text">
+                  Босфор
+                </p>
+                <button class="element__group element__group_hover element__group_active" type="button">
+                </button>
+              </div>
+            </li>
+            <li class="element">
+              <img class="element__mask-group" alt="Малага" src="./sprint-4-images/jonas-hoss-p0R8R5IS6aA-unsplash.jpg">
+              <div class="element__info">
+                <p class="element__text">
+                  Малага
+                </p>
+                <button class="element__group element__group_hover element__group_active" type="button">
+                </button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__text">
+          © 2023 Mesto Russia
+        </p>
+      </footer>
+      <div class="popup">
+        <form class="popup__container">
+          <h2 class="popup__container-heading">Редактировать профиль</h2>
+          <fieldset class="popup__container-text">
+            <input class="popup__container-item" type="text" placeholder="Имя" required value="Жак-Ив Кусто">
+            <input class="popup__container-item" type="text" placeholder="О себе" required value="Исследователь океана">
+          </fieldset>
+          <fieldset class="popup__container-handler">
+            <button class="popup__container-button popup__container-button_hover" type="submit">
+            Сохранить
+            </button>
+          </fieldset>
+          <img src="./sprint-4-images/Close-Icon.svg" alt="закрыть" class="popup__container-close">
+        </form>
+      </div>
+    </div>
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>

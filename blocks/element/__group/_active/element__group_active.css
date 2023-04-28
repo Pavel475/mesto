@@ -1,0 +1,4 @@
+.element__group_active:active {
+    opacity: 1;
+    background-image: url(../../../../sprint-4-images/black-heart.svg);
+}
