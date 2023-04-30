@@ -2,7 +2,7 @@
     font-family: 'Inter', Arial, sans-serif;
     max-width: 880px;
     margin: 0 auto;
-    padding-bottom: 66px;
+    padding-bottom: 69px;
 }
 
 @media screen and (max-width: 1023px) {
@@ -28,6 +28,6 @@
 @media screen and (max-width: 450px) {
     .elements {
         max-width: 282px;
-        padding-bottom: 48px;
+        padding-bottom: 50px;
     }
 }

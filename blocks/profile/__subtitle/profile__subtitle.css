@@ -12,9 +12,9 @@
     -ms-grid-row-span: 1;
     grid-row: 2/3;
     -ms-grid-row-align: start;
-        align-self: start;
+    align-self: start;
     -o-text-overflow: ellipsis;
-       text-overflow: ellipsis;
+    text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }

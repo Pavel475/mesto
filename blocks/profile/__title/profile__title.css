@@ -13,11 +13,12 @@
     grid-row: 1/2;
     font-weight: 500;
     -ms-grid-row-align: end;
-        align-self: end;
+    align-self: end;
     -o-text-overflow: ellipsis;
-       text-overflow: ellipsis;
+    text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    max-width: 327px;
 }
 
 @media screen and (max-width: 600px) {
