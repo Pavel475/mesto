@@ -96,17 +96,19 @@
         </p>
       </footer>
       <div class="popup">
-        <form class="popup__container" name="profile-form">
-          <h2 class="popup__container-heading">Редактировать профиль</h2>
-          <input class="popup__input popup__input_type_nickname" autocomplete="off" name="firstname" type="text" placeholder="Имя" required value="">
-          <input class="popup__input popup__input_type_info" autocomplete="off" name="secondname" type="text" placeholder="О себе" required value="">
-          <button class="popup__container-button" type="submit">
-          Сохранить
-          </button>
-          <button class="popup__close-button" type="button">
-          <img src="./sprint-4-images/Close-Icon.svg" alt="закрыть" class="popup__close-image">
-          </button>
-        </form>
+        <div class="popup__container">
+          <form class="popup__form" name="profile-form">
+            <h2 class="popup__container-heading">Редактировать профиль</h2>
+            <input class="popup__input popup__input_type_nickname" autocomplete="off" name="firstname" type="text" placeholder="Имя" required value="">
+            <input class="popup__input popup__input_type_info" autocomplete="off" name="secondname" type="text" placeholder="О себе" required value="">
+            <button class="popup__container-button" type="submit">
+            Сохранить
+            </button>
+            <button class="popup__close-button" type="button">
+            <img src="./sprint-4-images/Close-Icon.svg" alt="закрыть" class="popup__close-image">
+            </button>
+          </form>
+        </div>
       </div>
     </div>
     <script src="./scripts/index.js"></script>

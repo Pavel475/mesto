@@ -1,6 +1,6 @@
 let profile = document.querySelector('.profile');
 let popup = document.querySelector('.popup');
-let form = popup.querySelector('.popup__container');
+let form = popup.querySelector('.popup__form');
 let edit = profile.querySelector('.profile__edit-button');
 let close = popup.querySelector('.popup__close-button');
 let inputname = popup.querySelector('.popup__input_type_nickname');
@@ -15,16 +15,11 @@ edit.addEventListener('click', function () {
     inputinfo.value = subtitle.textContent;
 });
 
-submit.addEventListener('click', function () {
+form.addEventListener('submit', function handleFormSubmit (evt) {
+    evt.preventDefault();
+    title.textContent = inputname.value;
+    subtitle.textContent = inputinfo.value;
     popup.classList.remove('popup_opened');
-
-    function handleFormSubmit (evt) {
-        evt.preventDefault();
-        title.textContent = inputname.value;
-        subtitle.textContent = inputinfo.value;
-    };
-    
-    form.addEventListener('submit', handleFormSubmit);
 });
 
 close.addEventListener('click', function () {
