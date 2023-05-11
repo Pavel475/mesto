@@ -45,7 +45,7 @@ let submit = popup.querySelector('.popup__container-button');
 let heading = popup.querySelector('.popup__container-heading');
 
 /*addpopup*/
-let addpopup = document.querySelector('.popup__add');
+let addpopup = document.querySelector('.popup_type_add');
 let addclose = addpopup.querySelector('.popup__close-button');
 let addform = addpopup.querySelector('.popup__form');
 let inputtitle = addpopup.querySelector('.popup__input_type_title');
