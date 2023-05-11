@@ -27,66 +27,6 @@
         </section>
         <section class="elements">
           <ul class="elements-list">
-            <li class="element">
-              <img class="element__mask-group" alt="кафе Травел" src="./sprint-4-images/igor-oliyarnik-Uu5aXBI1oLk-unsplash.jpg">
-              <div class="element__info">
-                <h2 class="element__text">
-                  Кафе Травел
-                </h2>
-                <button class="element__group element__group_active" type="button">
-                </button>
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__mask-group" alt="Сиднейский оперный театр" src="./sprint-4-images/photoholgic-jK9dT34TfuI-unsplash.jpg">
-              <div class="element__info">
-                <h2 class="element__text">
-                  Сиднейский оперный театр
-                </h2>
-                <button class="element__group element__group_active" type="button">
-                </button>              
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__mask-group" alt="Порт Сочи" src="./sprint-4-images/damir-yakupov-XEj4CIoNYbk-unsplash.jpg">
-              <div class="element__info">
-                <h2 class="element__text">
-                  Порт Сочи
-                </h2>
-                <button class="element__group element__group_active" type="button">
-                </button>
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__mask-group" alt="Литейный мост" src="./sprint-4-images/hu-chen-pwuzRFG4Dm4-unsplash.jpg">
-              <div class="element__info">
-                <h2 class="element__text">
-                  Литейный мост
-                </h2>
-                <button class="element__group element__group_active" type="button">
-                </button>
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__mask-group" alt="Босфор" src="./sprint-4-images/despina-galani-k5yE2uTuyys-unsplash.jpg">
-              <div class="element__info">
-                <h2 class="element__text">
-                  Босфор
-                </h2>
-                <button class="element__group element__group_active" type="button">
-                </button>
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__mask-group" alt="Малага" src="./sprint-4-images/jonas-hoss-p0R8R5IS6aA-unsplash.jpg">
-              <div class="element__info">
-                <h2 class="element__text">
-                  Малага
-                </h2>
-                <button class="element__group element__group_active" type="button">
-                </button>
-              </div>
-            </li>
           </ul>
         </section>
       </main>
@@ -108,6 +48,45 @@
             <img src="./sprint-4-images/Close-Icon.svg" alt="закрыть" class="popup__close-image">
             </button>
           </form>
+        </div>
+      </div>
+      <div class="popup popup__add">
+        <div class="popup__container">
+          <form class="popup__form" name="add-form">
+            <h2 class="popup__container-heading">Новое место</h2>
+            <input class="popup__input popup__input_type_title" autocomplete="off" name="firsttitle" type="text" placeholder="Название" required value="">
+            <input class="popup__input popup__input_type_link" autocomplete="off" name="secondlink" type="text" placeholder="Ссылка на картинку" required value="">
+            <button class="popup__container-button" type="submit">
+            Создать
+            </button>
+            <button class="popup__close-button" type="button">
+            <img src="./sprint-4-images/Close-Icon.svg" alt="закрыть" class="popup__close-image">
+            </button>
+          </form>
+        </div>
+      </div>
+      <template class="template">
+        <li class="element">
+          <img class="element__mask-group">
+          <div class="element__info">
+            <h2 class="element__text">
+            </h2>
+            <button class="element__group" type="button">
+            </button>
+          </div>
+          <button class="element__trash-button" type="reset">
+          <img src="./sprint-4-images/trash.svg" alt="удалить" class="element__trash-image">
+          </button>
+        </li>
+      </template>
+      <div class="popup-image">
+        <div class="popup-image__group">
+          <img class="popup-image__image">
+          <h2 class="popup-image__text">
+          </h2>
+          <button class="popup-image__button" type="button">
+          <img src="./sprint-4-images/Close-Icon.svg" alt="закрыть" class="popup-image__close">
+          </button>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
 }
 
 @media screen and (max-width: 767px) {
@@ -28,4 +28,8 @@
         min-height: 282px;
         max-height: 282px;
     }
+}
+
+.element__mask-group:hover {
+    cursor: pointer;
 }
