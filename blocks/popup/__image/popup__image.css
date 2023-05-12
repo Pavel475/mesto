@@ -1,4 +1,4 @@
-.popup-image__image {
+.popup__image {
     height: 100%;
     -o-object-fit: cover;
        object-fit: cover;

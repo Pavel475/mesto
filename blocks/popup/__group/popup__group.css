@@ -1,4 +1,4 @@
-.popup-image__group {
+.popup__group {
     height: 75vh;
     color: #FFFFFF;
     position: relative;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 600px) {
-    .popup-image__group {
+    .popup__group {
         height: 52.5vh;
     }
 }
