@@ -33,9 +33,6 @@ function checkInputValidity(formElement, inputElement, config) {
     const isInputValid = inputElement.validity.valid;
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
-    buttonOpenFormEditProfile.addEventListener('click', function() {hideInputError(inputElement, errorElement, config)})
-    buttonOpenAddCardPopup.addEventListener('click', function() {hideInputError(inputElement, errorElement, config)})
-
     if (!isInputValid) {
         showInputError(inputElement, errorElement, config);
     } else {

@@ -84,10 +84,26 @@ function closePopup(popupElement) {
   popupElement.removeEventListener('click', closePopupOverlay);
 }
 
+function findInputsAndErrors(formElement, config) {
+  const inputsList = Array.from(formElement.querySelectorAll(config.inputSelector));
+  inputsList.forEach(function(inputItem) {
+    const errorElement = formElement.querySelector(`.${inputItem.id}-error`);
+    hideInputError(inputItem, errorElement, config);
+})
+}
+
+function clearPopupsError(config) {
+  const formsList = Array.from(document.querySelectorAll(config.formSelector));
+  formsList.forEach(function(formItem) {
+    findInputsAndErrors(formItem, config)
+});
+}
+
 buttonOpenFormEditProfile.addEventListener('click', function () {
     openPopup(popupEditProfile);
     inputName.value = profileTitle.textContent;
     inputInfo.value = profileSubtitle.textContent;
+    clearPopupsError(configFormSelector);
 });
 
 formEditProfile.addEventListener('submit', function handleFormSubmit () {
@@ -100,11 +116,11 @@ buttonCloseEditProfilePopup.addEventListener('click', function () {
     closePopup(popupEditProfile);
 });
 
-
 buttonOpenAddCardPopup.addEventListener('click', function () {
     openPopup(popupAddProfile);
     inputTitle.value = '';
     inputLink.value = '';
+    clearPopupsError(configFormSelector);
 });
 
 initialCards.forEach( function (elementList) {
