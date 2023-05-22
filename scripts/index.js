@@ -84,6 +84,11 @@ function closePopup(popupElement) {
   popupElement.removeEventListener('click', closePopupOverlay);
 }
 
+function deactivateButton(formElement, config) {
+  const submitButtonElement = formElement.querySelector(config.submitButtonSelector);
+  disabledButton(submitButtonElement, config)
+}
+
 function findInputsAndErrors(formElement, config) {
   const inputsList = Array.from(formElement.querySelectorAll(config.inputSelector));
   inputsList.forEach(function(inputItem) {
@@ -96,6 +101,7 @@ function clearPopupsError(config) {
   const formsList = Array.from(document.querySelectorAll(config.formSelector));
   formsList.forEach(function(formItem) {
     findInputsAndErrors(formItem, config)
+    deactivateButton(formItem, config)
 });
 }
 
