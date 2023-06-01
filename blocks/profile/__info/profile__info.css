@@ -30,9 +30,3 @@
         margin: 26px auto 33px auto;
     }
 }
-
-@media screen and (max-width: 450px) {
-    .profile__info {
-        margin-right: 19px;
-    }
-}
