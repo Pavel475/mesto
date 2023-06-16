@@ -1,30 +1,31 @@
 import { Card } from './Card.js';
-import { FormValidator, configFormSelector } from './FormValidator.js';
+import { FormValidator } from './FormValidator.js';
+import { configFormSelector } from './validate.js'
 
 const initialCards = [
   {
-    name: 'Кафе Травел',
-    link: './sprint-4-images/igor-oliyarnik-Uu5aXBI1oLk-unsplash.jpg'
-  },
-  {
-    name: 'Сиднейский оперный театр',
-    link: './sprint-4-images/photoholgic-jK9dT34TfuI-unsplash.jpg'
-  },
-  {
-    name: 'Порт Сочи',
-    link: './sprint-4-images/damir-yakupov-XEj4CIoNYbk-unsplash.jpg'
-  },
-  {
-    name: 'Литейный мост',
-    link: './sprint-4-images/hu-chen-pwuzRFG4Dm4-unsplash.jpg'
+    name: 'Малага',
+    link: './sprint-4-images/jonas-hoss-p0R8R5IS6aA-unsplash.jpg'
   },
   {
     name: 'Босфор',
     link: './sprint-4-images/despina-galani-k5yE2uTuyys-unsplash.jpg'
   },
   {
-    name: 'Малага',
-    link: './sprint-4-images/jonas-hoss-p0R8R5IS6aA-unsplash.jpg'
+    name: 'Литейный мост',
+    link: './sprint-4-images/hu-chen-pwuzRFG4Dm4-unsplash.jpg'
+  },
+  {
+    name: 'Порт Сочи',
+    link: './sprint-4-images/damir-yakupov-XEj4CIoNYbk-unsplash.jpg'
+  },
+  {
+    name: 'Сиднейский оперный театр',
+    link: './sprint-4-images/photoholgic-jK9dT34TfuI-unsplash.jpg'
+  },
+  {
+    name: 'Кафе Травел',
+    link: './sprint-4-images/igor-oliyarnik-Uu5aXBI1oLk-unsplash.jpg'
   }
 ];
 
@@ -79,8 +80,8 @@ function closePopupOverlay(evt) {
 }
 
 function closePopupEscape(evt) {
-  const popupOpened = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
   }
 }
@@ -91,22 +92,19 @@ function closePopup(popupElement) {
   popupElement.removeEventListener('click', closePopupOverlay);
 }
 
-function clearPopupsError(formElement, onValidate) {
-  const buttonForm = formElement.querySelector('.popup__container-button');
-  onValidate._disableButton(buttonForm);
-
-  const inputsList = Array.from(formElement.querySelectorAll('.popup__input'));
-  inputsList.forEach(function(inputItem) {
-    const errorElement = formElement.querySelector(`.${inputItem.id}-error`);
-    onValidate._hideInputError(inputItem, errorElement);
-});
+function clearPopupsError(onValidate) {
+  onValidate.disableButton();
+  onValidate._inputsList.forEach(function(inputItem) {
+    onValidate._errorElement = onValidate._formElement.querySelector(`.${inputItem.id}-error`);
+    onValidate.hideInputError(inputItem);
+    });
 }
 
 buttonOpenFormEditProfile.addEventListener('click', function () {
     openPopup(popupEditProfile);
     inputName.value = profileTitle.textContent;
     inputInfo.value = profileSubtitle.textContent;
-    clearPopupsError(formEditProfile, onValidateProfile);
+    clearPopupsError(onValidateProfile);
 });
 
 formEditProfile.addEventListener('submit', function handleFormSubmit () {
@@ -123,7 +121,7 @@ buttonOpenAddCardPopup.addEventListener('click', function () {
     openPopup(popupAddProfile);
     inputTitle.value = '';
     inputLink.value = '';
-    clearPopupsError(formAddCard, onValidateAddCard);
+    clearPopupsError(onValidateAddCard);
 });
 
 buttonCloseImagePopup.addEventListener('click', function () {
@@ -134,20 +132,23 @@ buttonCloseAddCardPopup.addEventListener('click', function () {
   closePopup(popupAddProfile);
 });
 
+
+function createCard(item) {
+  const card = new Card(item, '.template', openImagePopup);
+  const cardElement = card.createCard(elementsList);
+  return cardElement;
+}
+
 formAddCard.addEventListener('submit', function handleFormSubmit () {
   const name = inputTitle.value;
   const link = inputLink.value;
   const elementList = {name, link};
-  const card = new Card(elementList, '.template', openImagePopup);
-  const cardElement = card.createCard();
-  elementsList.prepend(cardElement);
+  createCard(elementList);
   closePopup(popupAddProfile);
 });
 
 initialCards.forEach((item) => {
-  const card = new Card(item, '.template', openImagePopup);
-  const cardElement = card.createCard();
-  elementsList.append(cardElement);
+  createCard(item);
 });
 
 const onValidateProfile = new FormValidator(configFormSelector, formEditProfile);

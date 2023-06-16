@@ -16,33 +16,38 @@ export class Card {
         return cardElement;
     }
 
-    _renderCardsList() {
+    _renderCardsList(elementsList) {
         this._element = this._getTemplate();
-        this._element.querySelector('.element__text').textContent = this._name;
-        this._element.querySelector('.element__mask-group').src = this._link;
-        this._element.querySelector('.element__mask-group').alt = this._name;
+        this._cardText = this._element.querySelector('.element__text');
+        this._cardImage = this._element.querySelector('.element__mask-group');
+        this._cardText.textContent = this._name;
+        this._cardImage.src = this._link;
+        this._cardImage.alt = this._name;
+
+        this._cardLike = this._element.querySelector('.element__group');
+        this._cardTrash = this._element.querySelector('.element__trash-button');
 
         this._setEventListeners();
 
-        return this._element;
+        elementsList.prepend(this._element);
     }
 
     _setEventListeners() {
-        this._element.querySelector('.element__group').addEventListener('click', () => {
+        this._cardLike.addEventListener('click', () => {
             this._clickElementHeart();
         });
 
-        this._element.querySelector('.element__trash-button').addEventListener('click', () => {
+        this._cardTrash.addEventListener('click', () => {
             this._clickElementDelete();
         });
         
-        this._element.querySelector('.element__mask-group').addEventListener('click', () => {
+        this._cardImage.addEventListener('click', () => {
             this._clickElementImage();
         });
     }
 
     _clickElementHeart() {
-        this._element.querySelector('.element__group').classList.toggle('element__group_active');
+        this._cardLike.classList.toggle('element__group_active');
     }
 
     _clickElementDelete() {
@@ -53,7 +58,7 @@ export class Card {
         this._onCardClick(this._dataCard);
     }
 
-    createCard() {
-        return this._renderCardsList();
+    createCard(elementsList) {
+        return this._renderCardsList(elementsList);
     }
 }
