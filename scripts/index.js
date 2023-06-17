@@ -135,7 +135,7 @@ buttonCloseAddCardPopup.addEventListener('click', function () {
 
 function createCard(item) {
   const card = new Card(item, '.template', openImagePopup);
-  const cardElement = card.createCard(elementsList);
+  const cardElement = card.createCard();
   elementsList.prepend(cardElement);
   return cardElement;
 }
