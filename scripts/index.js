@@ -94,8 +94,8 @@ function closePopup(popupElement) {
 
 function clearPopupsError(onValidate) {
   onValidate.disableButton();
-  onValidate._inputsList.forEach(function(inputItem) {
-    onValidate._errorElement = onValidate._formElement.querySelector(`.${inputItem.id}-error`);
+  onValidate.inputsList.forEach(function(inputItem) {
+    onValidate.errorElement = onValidate.formElement.querySelector(`.${inputItem.id}-error`);
     onValidate.hideInputError(inputItem);
     });
 }
@@ -136,6 +136,7 @@ buttonCloseAddCardPopup.addEventListener('click', function () {
 function createCard(item) {
   const card = new Card(item, '.template', openImagePopup);
   const cardElement = card.createCard(elementsList);
+  elementsList.prepend(cardElement);
   return cardElement;
 }
 

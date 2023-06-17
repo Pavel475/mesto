@@ -16,7 +16,7 @@ export class Card {
         return cardElement;
     }
 
-    _renderCardsList(elementsList) {
+    _renderCardsList() {
         this._element = this._getTemplate();
         this._cardText = this._element.querySelector('.element__text');
         this._cardImage = this._element.querySelector('.element__mask-group');
@@ -29,7 +29,7 @@ export class Card {
 
         this._setEventListeners();
 
-        elementsList.prepend(this._element);
+        return this._element;
     }
 
     _setEventListeners() {
@@ -58,7 +58,7 @@ export class Card {
         this._onCardClick(this._dataCard);
     }
 
-    createCard(elementsList) {
-        return this._renderCardsList(elementsList);
+    createCard() {
+        return this._renderCardsList();
     }
 }
