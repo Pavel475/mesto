@@ -10,7 +10,7 @@ import PopupWithForm from '../scripts/components/PopupWithForm.js';
 
 buttonOpenFormEditProfile.addEventListener('click', function () {
   popupEditProfile.open();
-  userInfo.getUserInfo();
+  popupEditProfile.setInputValues(userInfo.getUserInfo());
   onValidateProfile.resetErrors();
 });
 

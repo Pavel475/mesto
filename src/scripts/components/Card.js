@@ -42,7 +42,7 @@ export default class Card {
         });
         
         this._cardImage.addEventListener('click', () => {
-            return this._clickElementImage();
+            this._clickElementImage();
         });
     }
 

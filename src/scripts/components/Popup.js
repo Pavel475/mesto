@@ -3,6 +3,7 @@ export default class Popup {
         this._popupOpened = 'popup_opened';
         this._popupElement = document.querySelector(popupSelector);
         this._buttonClose = this._popupElement.querySelector('.popup__close-button');
+        this._handleEscClose = this._handleEscClose.bind(this);
     }
 
     _handleEscClose(evt) {
@@ -18,19 +19,17 @@ export default class Popup {
     }
 
     setEventListeners() {
-        document.addEventListener('keydown', this._handleEscClose.bind(this));
         this._buttonClose.addEventListener('click', this.close.bind(this));
         this._popupElement.addEventListener('click', this._handleOverlayClose.bind(this));
     }
 
     open() {
         this._popupElement.classList.add(this._popupOpened);
+        document.addEventListener('keydown', this._handleEscClose);
     }
 
     close() {
         this._popupElement.classList.remove(this._popupOpened);
-        document.removeEventListener('keydown', this._handleEscClose.bind(this));
-        this._buttonClose.removeEventListener('click', this.close.bind(this));
-        this._popupElement.removeEventListener('click', this._handleOverlayClose.bind(this));
+        document.removeEventListener('keydown', this._handleEscClose);
     }
 }
