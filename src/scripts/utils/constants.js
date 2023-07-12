@@ -1,10 +1,3 @@
-import malaga from '../../sprint-4-images/jonas-hoss-p0R8R5IS6aA-unsplash.jpg';
-import bosfor from '../../sprint-4-images/despina-galani-k5yE2uTuyys-unsplash.jpg';
-import liteiniyMost from '../../sprint-4-images/hu-chen-pwuzRFG4Dm4-unsplash.jpg';
-import portSochi from '../../sprint-4-images/damir-yakupov-XEj4CIoNYbk-unsplash.jpg';
-import sidneiskiyOperniyTeatr from '../../sprint-4-images/photoholgic-jK9dT34TfuI-unsplash.jpg';
-import cafeTravel from '../../sprint-4-images/igor-oliyarnik-Uu5aXBI1oLk-unsplash.jpg';
-
 export const configFormSelector = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
@@ -14,32 +7,14 @@ export const configFormSelector = {
     errorClass: 'popup__error_visible'
 }
 
-export const initialCards = [
-    {
-      name: 'Малага',
-      link: malaga
-    },
-    {
-      name: 'Босфор',
-      link: bosfor
-    },
-    {
-      name: 'Литейный мост',
-      link: liteiniyMost
-    },
-    {
-      name: 'Порт Сочи',
-      link: portSochi
-    },
-    {
-      name: 'Сиднейский оперный театр',
-      link: sidneiskiyOperniyTeatr
-    },
-    {
-      name: 'Кафе Травел',
-      link: cafeTravel
-    }
-];
-
 export const buttonOpenFormEditProfile = document.querySelector('.profile__edit-button');
 export const buttonOpenAddCardPopup = document.querySelector('.profile__add-button');
+export const buttonOpenAvatarEditPopup = document.querySelector('.profile__pen')
+
+export const configApi = {
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-70',
+  headers: {
+    authorization: '5b47a567-b4a3-46e6-966e-d1c10534cc68',
+    'Content-Type': 'application/json'
+  }
+};

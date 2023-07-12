@@ -1,4 +1,4 @@
-.element__group_active {
+.element__group-button_active {
     opacity: 1;
     background-image: url(../../../../sprint-4-images/black-heart.svg);
 }
