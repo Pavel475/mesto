@@ -62,22 +62,17 @@ export default class Card {
     }
 
     _clickElementHeart() {
-        this._cardLike.classList.toggle('element__group-button_active');
         if (this._cardLike.classList.contains('element__group-button_active')) {
-            this._handleLikeClick(this._dataCard._id);
-        } else {
             this._handleRemoveLikeClick(this._dataCard._id);
+        } else {
+            this._handleLikeClick(this._dataCard._id);
         }
     }
 
-    addLikes(data) {
+    stateLikes(data) {
         this._cardLikes = data.likes;
         console.log(this._cardLikes);
-        if (this._cardLikes.length === 0) {
-            this._text.textContent = '0';
-        } else {
-            this._text.textContent = this._cardLikes.length;
-        }
+        this._text.textContent = this._cardLikes.length;
     }
 
     _clickElementDelete() {

@@ -1,13 +1,13 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-    constructor({popupSelector, submit, loadButton}) {
+    constructor({popupSelector, submit}) {
         super({popupSelector});
         this.form = this._popupElement.querySelector('.popup__form');
         this._inputsList = Array.from(this.form.querySelectorAll('.popup__input'));
         this._submit = submit;
         this._submitButton = this.form.querySelector('.popup__container-button');
-        this._loadButton = loadButton;
+        this._submitButtonText = this._submitButton.textContent;
         this.setEventListeners();
     }
 
@@ -20,14 +20,10 @@ export default class PopupWithForm extends Popup {
         return this._data;
     }
 
-    setInputValues({name, info}) {
+    setInputValues(data) {
         this._inputsList.forEach( (input) => {
-            if (input.name === 'nickName') {
-                input.value = name;
-            } else {
-                input.value = info;
-            }
-        })
+            input.value = data[input.name];
+    })
     }
 
     setEventListeners() {
@@ -38,23 +34,11 @@ export default class PopupWithForm extends Popup {
         })
     }
 
-    isLoadAddPopup(isLoading) {
+    renderLoading(isLoading, loadingText='Сохранение...') {
         if (isLoading) {
-            this._submitButton.textContent = 'Создание...';
-            this._loadButton();
+            this._submitButton.textContent = loadingText;
         } else {
-            this._submitButton.textContent = 'Создать';
-            this.close();
-        }
-    }
-
-    isLoadProfileEditPopup(isLoading) {
-        if (isLoading) {
-            this._submitButton.textContent = 'Сохранение...';
-            this._loadButton();
-        } else {
-            this._submitButton.textContent = 'Сохранить';
-            this.close();
+            this._submitButton.textContent = this._submitButtonText;
         }
     }
 

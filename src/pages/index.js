@@ -9,7 +9,6 @@ import UserInfo from '../scripts/components/UserInfo.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import Api from '../scripts/components/Api.js';
 import PopupWithConfirmation from '../scripts/components/PopupWithConfirmation.js';
-import PopupWithAvatar from '../scripts/components/PopupWithAvatar.js';
 
 const api = new Api(configApi);
 
@@ -25,10 +24,12 @@ Promise.all([api.getInitialCards(), api.userInfo()])
 
   const popupConfirm = new PopupWithConfirmation({
     popupSelector: '.popup_confirm',
-    submit: (id) => {
+    submit: (id, element) => {
       api.deleteCard(id)
       .then((id) => {
         console.log(id)
+        element.remove();
+        popupConfirm.close();
     })
       .catch((err) => console.log(err));
     }
@@ -36,18 +37,16 @@ Promise.all([api.getInitialCards(), api.userInfo()])
   
   const popupAddCard = new PopupWithForm({popupSelector: '.popup_add-profile',
     submit: (name) => {
-      popupAddCard.isLoadAddPopup(true);
+      popupAddCard.renderLoading(true);
       api.createCard(name)
       .then((cardInfo) => {
         const cardElement = createCard(cardInfo, cardInfo.owner._id);
         section.addItem(cardElement);
+        popupAddCard.close();
         return cardElement;
       })
       .catch((err) => console.log(err))
-      .finally(() => {popupAddCard.isLoadAddPopup(false)});
-    },
-    loadButton: () => {
-      onValidateAddCard.enableButton();
+      .finally(() => {popupAddCard.renderLoading(false)});
     }
   })
 
@@ -79,14 +78,16 @@ Promise.all([api.getInitialCards(), api.userInfo()])
     handleLikeClick: (id) => {
       api.putLike(id)
       .then((likesCard) => {
-        card.addLikes(likesCard);
+        card.stateLikes(likesCard);
+        card._cardLike.classList.add('element__group-button_active');
       })
       .catch((err) => console.log(err))
     },
     handleRemoveLikeClick: (id) => {
       api.removeLike(id)
       .then((likesCard) => {
-        card.addLikes(likesCard);
+        card.stateLikes(likesCard);
+        card._cardLike.classList.remove('element__group-button_active');
       })
       .catch((err) => console.log(err))
     }
@@ -97,22 +98,22 @@ Promise.all([api.getInitialCards(), api.userInfo()])
   
   const userInfo = new UserInfo({
     nameSelector: '.profile__title',
-    infoSelector: '.profile__subtitle'
+    infoSelector: '.profile__subtitle',
+    avatarSelector: '.profile__avatar'
   });
   
   const popupEditProfile = new PopupWithForm({popupSelector: '.popup_edit-profile',
   submit: (name) => {
-    popupEditProfile.isLoadProfileEditPopup(true);
+    popupEditProfile.renderLoading(true);
     api.editProfileInfo(name)
     .then((info) => {
+      console.log(info);
       userInfo.name.textContent = info.name;
       userInfo.info.textContent = info.about;
+      popupEditProfile.close();
     })
     .catch((err) => console.log(err))
-    .finally(() => {popupEditProfile.isLoadProfileEditPopup(false)});
-  },
-  loadButton: () => {
-    onValidateProfile.enableButton();
+    .finally(() => {popupEditProfile.renderLoading(false)});
   }
 })
   
@@ -127,18 +128,17 @@ Promise.all([api.getInitialCards(), api.userInfo()])
     onValidateProfileAvatar.disableFormButton();
   })
 
-  const popupAvatar = new PopupWithAvatar({popupSelector: '.popup_avatar',
+  const popupAvatar = new PopupWithForm({popupSelector: '.popup_avatar',
   submit: (newAvatar) => {
-    popupAvatar.isLoadProfileAvatarPopup(true);
+    console.log(newAvatar);
+    popupAvatar.renderLoading(true);
     api.updateAvatar(newAvatar)
     .then((response) => {
-      popupAvatar.setAvatar(response.avatar);
+      userInfo.avatar.src = response.avatar;
+      popupAvatar.close();
     })
-    .catch((err) => console.log(`Ошибка: ${err}`))
-    .finally(() => {popupAvatar.isLoadProfileAvatarPopup(false)});
-  },
-  loadButton: () => {
-    onValidateProfileAvatar.enableButton();
+    .catch((err) => console.log(err))
+    .finally(() => {popupAvatar.renderLoading(false)});
   }
 });
 
@@ -147,13 +147,9 @@ Promise.all([api.getInitialCards(), api.userInfo()])
 
   api.userInfo()
   .then((response) => {
-  userInfo.name.textContent = response.name;
-  userInfo.info.textContent = response.about;
-  popupAvatar.getAvatar(response.avatar);
+    userInfo.setUserInfo(response);
   })
   .catch((err) => {console.log(err)});
-
-popupAvatar.setEventListeners();
 
 section.renderItems();
 })

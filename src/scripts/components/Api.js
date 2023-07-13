@@ -1,28 +1,27 @@
-const handleResponse = res => {
-    if (res.ok) {
-        return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-}
-
 export default class Api {
     constructor(options) {
         this.url = options.baseUrl;
         this._headers = options.headers;
     }
 
+    _handleResponse(res) {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    }
     userInfo() {
         return fetch(this.url + '/users/me', {
             headers: this._headers
         })
-        .then(handleResponse);
+        .then(this._handleResponse);
     }
 
     getInitialCards() {
         return fetch(this.url + '/cards', {
             headers: this._headers
         })
-        .then(handleResponse);
+        .then(this._handleResponse);
     }
 
     editProfileInfo(newInfo) {
@@ -34,7 +33,7 @@ export default class Api {
                 about: newInfo.info
             })
         })
-        .then(handleResponse);
+        .then(this._handleResponse);
     }
 
     createCard(data) {
@@ -46,7 +45,7 @@ export default class Api {
                 link: data.link
             })
         })
-        .then(handleResponse);
+        .then(this._handleResponse);
     }
 
     deleteCard(id) {
@@ -54,7 +53,7 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers
         })
-        .then(handleResponse);
+        .then(this._handleResponse);
     }
 
     putLike(id) {
@@ -62,7 +61,7 @@ export default class Api {
             method: 'PUT',
             headers: this._headers
         })
-        .then(handleResponse);
+        .then(this._handleResponse);
     }
 
     removeLike(id) {
@@ -70,7 +69,7 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers
         })
-        .then(handleResponse);
+        .then(this._handleResponse);
     }
 
     updateAvatar(newAvatar) {
@@ -78,9 +77,9 @@ export default class Api {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                avatar: newAvatar
+                avatar: newAvatar.avatar
             })
         })
-        .then(handleResponse);
+        .then(this._handleResponse);
     }
 }
