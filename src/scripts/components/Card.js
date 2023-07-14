@@ -69,6 +69,14 @@ export default class Card {
         }
     }
 
+    addLike() {
+        this._cardLike.classList.add('element__group-button_active');
+    }
+
+    removeLike() {
+        this._cardLike.classList.remove('element__group-button_active');
+    }
+
     stateLikes(data) {
         this._cardLikes = data.likes;
         console.log(this._cardLikes);

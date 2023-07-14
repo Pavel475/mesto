@@ -13,8 +13,14 @@ export default class UserInfo {
     }
 
     setUserInfo(data) {
-        this.name.textContent = data.name;
-        this.info.textContent = data.about;
-        this.avatar.src = data.avatar;
+        if (data.name !== undefined) {
+            this.name.textContent = data.name;
+        }
+        if (data.about !== undefined) {
+            this.info.textContent = data.about;
+        }
+        if (data.avatar !== undefined) {
+            this.avatar.src = data.avatar;
+        }
     }
 }

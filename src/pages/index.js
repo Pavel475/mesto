@@ -79,17 +79,17 @@ Promise.all([api.getInitialCards(), api.userInfo()])
       api.putLike(id)
       .then((likesCard) => {
         card.stateLikes(likesCard);
-        card._cardLike.classList.add('element__group-button_active');
+        card.addLike();
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
     },
     handleRemoveLikeClick: (id) => {
       api.removeLike(id)
       .then((likesCard) => {
         card.stateLikes(likesCard);
-        card._cardLike.classList.remove('element__group-button_active');
+        card.removeLike();
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
     }
   }, currentId);
 
@@ -108,8 +108,7 @@ Promise.all([api.getInitialCards(), api.userInfo()])
     api.editProfileInfo(name)
     .then((info) => {
       console.log(info);
-      userInfo.name.textContent = info.name;
-      userInfo.info.textContent = info.about;
+      userInfo.setUserInfo(info);
       popupEditProfile.close();
     })
     .catch((err) => console.log(err))
@@ -134,7 +133,7 @@ Promise.all([api.getInitialCards(), api.userInfo()])
     popupAvatar.renderLoading(true);
     api.updateAvatar(newAvatar)
     .then((response) => {
-      userInfo.avatar.src = response.avatar;
+      userInfo.setUserInfo(response);
       popupAvatar.close();
     })
     .catch((err) => console.log(err))
